@@ -35,6 +35,10 @@ public class mobileCustomer {
         return name;
     }
 
+    public String getPlan() {
+        return personalPlan.getPlanType();
+    }
+
     public int getMinutes() {
         return personalPlan.getMinutes();
     }

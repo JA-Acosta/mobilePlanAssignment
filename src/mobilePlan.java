@@ -1,12 +1,17 @@
 // Describe the class and the informaiton it contains.
 public class mobilePlan {
 
-    private int planType; // UPDATE TO USE AN ENUM IN THE FUTURE.
+    private char planType; // UPDATE TO USE AN ENUM IN THE FUTURE.
     private int minutes;
     private String[] planDescription = new String[]{
             "$39.99 base rate (450 minutes); $ .45 per additional minute.",
             "$59.99 base rate (900 minutes); $ .40 per additional minute.",
             "$69.99 base rate (unlimited)"
+    };
+    private String[] planName = new String[]{ // The name for the plan
+            "(a) Basic",
+            "(b) Basic+",
+            "(c) Premium"
     };
 
     // Constructors:
@@ -25,7 +30,7 @@ public class mobilePlan {
 
     // Setters:
 
-    public void setPlanType(int planType) {
+    public void setPlanType(char planType) {
         this.planType = planType;
     }
 
@@ -35,12 +40,23 @@ public class mobilePlan {
 
     // Getters:
 
-    public int getPlanType() {
-        return planType;
-    }
-
     public int getMinutes() {
         return minutes;
+    }
+
+    // Determines the name of the users plan based on the users plan code.
+    // Return:
+    //  - String planNameTemp: represents the promotional name for the plan.
+    public String getPlanType() {
+        String planNameTemp;
+        if (planType == 'a') {
+            planNameTemp = planName[0];
+        } else if (planType == 'b') {
+            planNameTemp = planName[1];
+        } else {
+            planNameTemp = planName[2];
+        }
+        return planNameTemp;
     }
 
     // Gets the list of plans offered by the company.

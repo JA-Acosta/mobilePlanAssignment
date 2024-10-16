@@ -23,7 +23,10 @@ public class Main {
         intro();
         newCustomer = getCustomerInfo(input);
         newCustomer.setMinutes(customerMonthlyUse(input));
-        // customerBillInformation
+        System.out.println();
+        System.out.println();
+        System.out.println("Receipt: ");
+        printReceipt(newCustomer);
     }
 
     // Prints the introduction blurb for the user.
@@ -49,7 +52,9 @@ public class Main {
         String device = input.nextLine(); // Assumes the user enters the
         // device correctly.
         System.out.print("Enter the customers plan: ");
-        char planType = input.nextLine().charAt(0);
+        char planType = input.nextLine().toLowerCase().charAt(0); // Ensures
+        // the input is lowercase. Otherwise, assumes the user enters the
+        // right char.
         return new mobileCustomer(name, device, planType);
     }
 
@@ -66,6 +71,14 @@ public class Main {
     // Pram:
     //  - mobileCustomer newCustomer
     public static void printReceipt(mobileCustomer newCustomer) {
-
+        System.out.println("Customer Name: " + newCustomer.getName());
+        System.out.println("Customer Device: " + newCustomer.getDeviceType());
+        System.out.println("Customer Plan: " + newCustomer.getPlan());
+        System.out.println("_______________________________________________" +
+                "_______");
+        System.out.println();
+        System.out.println("Minutes Used: " + newCustomer.getMinutes());
+        // TODO: Add plan base rate and final price.
+        System.out.printf("Monthly Total: $%.2f",newCustomer.getFinalCharge());
     }
 }
